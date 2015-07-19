@@ -1,0 +1,12 @@
+#!/bin/sh
+
+halcmd setp axis.0.home $1
+halcmd setp axis.1.home $1
+halcmd setp axis.2.home $1
+
+halcmd setp axis.0.home-offset $1
+halcmd setp axis.1.home-offset $1
+halcmd setp axis.2.home-offset $1
+
+exit 0
+
