@@ -1,0 +1,5 @@
+#!/bin/bash
+# Turn off machine
+halcmd setp halui.machine.off False
+halcmd setp halui.machine.off True
+exit 0

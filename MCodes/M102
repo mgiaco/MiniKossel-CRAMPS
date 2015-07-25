@@ -1,0 +1,5 @@
+#!/bin/bash
+# home all axis
+halcmd setp halui.home-all false
+halcmd setp halui.home-all true
+exit 0
