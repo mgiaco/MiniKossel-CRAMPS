@@ -6,11 +6,13 @@ from machinekit import config as c
 def setup_motion(kinematics='lineardeltakins'):
     rt.loadrt(kinematics)
 
-    delta_r = c.find('MACHINE', 'DELTA_R')
-    cf_rod = c.find('MACHINE', 'CF_ROD')
+    # for delta printer // ArteQ
+    if kinematics == 'lineardeltakins':
+      delta_r = c.find('MACHINE', 'DELTA_R')
+      cf_rod = c.find('MACHINE', 'CF_ROD')
 
-    hal.Pin('lineardeltakins.L').set(cf_rod)
-    hal.Pin('lineardeltakins.R').set(delta_r)
+      hal.Pin('lineardeltakins.L').set(cf_rod)
+      hal.Pin('lineardeltakins.R').set(delta_r)
 
     rt.loadrt('tp')
 
