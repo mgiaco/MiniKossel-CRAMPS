@@ -14,8 +14,8 @@ try:
     launcher.check_installation()
     launcher.cleanup_session()
     launcher.load_bbio_file('cramps2_cape.bbio')
-    launcher.start_process("configserver -n KOSSEL ~/Cetus ~/Machineface")
-    launcher.start_process('linuxcnc KOSSEL.ini')
+    launcher.start_process("configserver -n MiniKossel ~/Machineface")
+    launcher.start_process('linuxcnc CRAMPS.ini')
     while True:
         launcher.check_processes()
         time.sleep(1)
