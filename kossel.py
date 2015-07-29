@@ -28,11 +28,6 @@ numFans = c.find('FDM', 'NUM_FANS')
 numExtruders = c.find('FDM', 'NUM_EXTRUDERS')
 numLights = c.find('FDM', 'NUM_LIGHTS')
 
-# delta kinamatics
-delta_r = c.find('MACHINE', 'DELTA_R')
-cf_rod = c.find('MACHINE', 'CF_ROD')
-
-
 # Axis-of-motion Specific Configs (not the GUI)
 ve.velocity_extrusion(extruders=numExtruders, thread='servo-thread')
 # X [0] Axis

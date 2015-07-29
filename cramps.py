@@ -67,11 +67,11 @@ def setup_hardware(thread):
         hal.Pin('hpg.pwmgen.00.out.%02i.value' % (n + 4)).link('f%i-pwm' % n)
         hal.Signal('f%i-pwm-enable' % n).set(True)
     # configure leds
-    # none
-
-    #extruder fan
-    #hal.Pin('hpg.pwmgen.00.out.02.enable').set(True)
-    #hal.Pin('hpg.pwmgen.00.out.02.value').link('f3-pwm')
+    hal.Pin('hpg.pwmgen.00.out.05.enable').set(True)
+    #hal.Pin('hpg.pwmgen.00.out.05.value').link('l0-0-out')
+    hal.Pin('hpg.pwmgen.00.out.05.value').set(1)
+    
+    #extruder fan ALWAYS on
     hal.Signal('e1-temp-pwm').set(True)
 
     # GPIO

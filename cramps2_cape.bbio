@@ -33,8 +33,8 @@ P9_15	low	# FET 2 : E0
 P9_16	low	# E0 Step
 P9_17	low	# E1 Step
 P9_18	low	# E1 Dir
-#   P9_19	low	# I2C SCL
-#	P9.20	low	# I2C SDA
+#	P9_19	low	# I2C SCL
+#	P9_20	low	# I2C SDA
 P9_21	low	# FET 4 : E1
 P9_22	low	# FET 6
 P9_23	low	# Machine Power
