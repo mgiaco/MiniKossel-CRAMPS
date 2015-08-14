@@ -16,6 +16,7 @@ try:
     launcher.load_bbio_file('cramps2_cape.bbio')
     launcher.start_process("configserver -n MiniKossel ~/Machineface")
     launcher.start_process('linuxcnc CRAMPS.ini')
+    launcher.start_process("python lcd.py");
     while True:
         launcher.check_processes()
         time.sleep(1)
