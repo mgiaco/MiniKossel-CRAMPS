@@ -22,7 +22,7 @@ def init_hardware():
     rt.loadrt('hal_bb_gpio', output_pins='816,822,823,824,825,826,914,923,925', input_pins='807,808,809,810,817,911,913')
     prubin = '%s/%s' % (c.Config().EMC2_RTLIB_DIR, c.find('PRUCONF', 'PRUBIN'))
     rt.loadrt(c.find('PRUCONF', 'DRIVER'),
-              pru=0, num_stepgens=6, num_pwmgens=6,
+              pru=0, num_stepgens=6, num_pwmgens=6, pru_period=5000,
               prucode=prubin, halname='hpg')
 
     # Python user-mode HAL module to read ADC value and generate a thermostat output for PWM
@@ -48,15 +48,15 @@ def init_hardware():
 def setup_hardware(thread):
     # PWM
     hal.Pin('hpg.pwmgen.00.pwm_period').set(10000000)  # 100Hz
-    hal.Pin('hpg.pwmgen.00.out.00.pin').set(811)
-    hal.Pin('hpg.pwmgen.00.out.01.pin').set(915)
-    hal.Pin('hpg.pwmgen.00.out.02.pin').set(927)
-    hal.Pin('hpg.pwmgen.00.out.03.pin').set(921)
-    hal.Pin('hpg.pwmgen.00.out.04.pin').set(941)
-    hal.Pin('hpg.pwmgen.00.out.05.pin').set(922)
+    hal.Pin('hpg.pwmgen.00.out.00.pin').set(811) # FET 1
+    hal.Pin('hpg.pwmgen.00.out.01.pin').set(915) # FET 2
+    hal.Pin('hpg.pwmgen.00.out.02.pin').set(927) # FET 3
+    hal.Pin('hpg.pwmgen.00.out.03.pin').set(921) # FET 4
+    hal.Pin('hpg.pwmgen.00.out.04.pin').set(941) # FET 5 / FAN / LED
+    hal.Pin('hpg.pwmgen.00.out.05.pin').set(922) # FET 6 / FAN /
     # HBP
-   # hal.Pin('hpg.pwmgen.00.out.00.enable').set(True)
-   # hal.Pin('hpg.pwmgen.00.out.00.value').link('hbp-temp-pwm')
+    hal.Pin('hpg.pwmgen.00.out.00.enable').set(True)
+    hal.Pin('hpg.pwmgen.00.out.00.value').link('hbp-temp-pwm')
     # configure extruders
     for n in range(0, 3):
         hal.Pin('hpg.pwmgen.00.out.%02i.enable' % (n + 1)).set(True)
